@@ -15,7 +15,8 @@ class Bulanan_model extends CI_Model{
 	
 	function getDaPe()
 	{
-		
+		$data = $this->db->from("TS_WILKKKS")->get();
+		return $data;
 	}
 	
 
