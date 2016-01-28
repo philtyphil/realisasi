@@ -1,0 +1,51 @@
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4><i class="fa fa-user"></i> Laporan Bulanan <small class="text-white">KKKS Realisasi</small></h4>
+		</div>
+		<div class="portlet-widgets">
+			<a data-toggle="collapse" data-parent="#accordion" href="#tabs-4"><i class="fa fa-chevron-down"></i></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div id="tabs-4" class="panel-collapse collapse in">
+		<div class="portlet-body">
+			<!-- :Start Data Absensi - @philtyphils -->
+			<div class="portlet-body">
+				<table class="table table-bordered table-striped table-hover tc-table table-primary footable" data-page-size="2">
+					<tbody>
+						<tr>
+							<td>Periode</td>
+							<td>
+								<input type="text" name='tahun' value="" placeholder="Tahun" />
+								<select name="Bulan">
+								<?php for($i=1;$i<=12;$i++):?>
+									<?php if($i<10):?>
+									<?php $i="0".$i;?>
+									<?php endif;?>
+									<option value="<?php echo $i;?>"><?php echo bulan_indonesia($i);?></option>
+								
+								<?php endfor;?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td> Daerah Penghasil KKKS </td>
+							<td>
+								<input type="radio" name="penghasil" value="1">&nbsp;Daerah Penghasil &nbsp;&nbsp;
+								<input type="radio" name="penghasil" value="2">&nbsp;KKKS <br/>
+								
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+				
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

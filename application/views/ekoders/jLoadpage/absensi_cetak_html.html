@@ -1,0 +1,65 @@
+<html>
+<head>
+<title> Cetak Absensi </title>
+<style src="<?php echo config_item('base_url');?>assets/ekoders/css/bootstrap.min.css" ></style>
+</head>
+<body>
+<div class="row" >
+	<div class="col-lg-12">
+			<!-- START Responsive table with js -->
+		<div class="page-header no-padding-bottom">
+			<h4>Data Absensi Pegawai</h4>
+		</div>								
+		<table class="table table-bordered table-hover tc-table table-primary " data-page-size="2" id="table_absensi">
+			<thead>
+				<tr >
+					
+					<th width="120px" class="text-center">Tanggal</th>
+					<th class="text-center">Jam Masuk</th>
+					<th data-toggle="true" class="text-center">Jam Pulang</th>
+					<th data-hide="phone,tablet">TL</th>
+					<th data-hide="phone,tablet">PSW</th>
+					<th data-hide="phone,tablet">Cuti</th>
+					<th data-hide="phone,tablet">TMB</th>
+					<th data-hide="phone,tablet">KET</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if(count($absensi_data) > 1):?>
+				<?php foreach($absensi_data as $key => $value):?>
+					<?php $class="";?>
+					<?php if(date('l',strtotime($value['date'])) == "Sunday" || 
+							date('l',strtotime($value['date'])) == "Saturday" ):?>
+					<?php $class = "danger";?>
+					<?php endif;?>	
+					<tr class="<?php echo $class;?>">
+						
+						<td><small><?php echo $hari[date('l',strtotime($value['date']))].",  <br/> ".date('d M Y',strtotime($value['date']));?></small></td>
+						<td class="text-center">
+							<?php echo $value['jam_datang'];?>
+						</td>
+						<td class="text-center"><?php echo $value['jam_datang'];?></td>
+						
+						<td class="text-center"><?php echo (!empty($value['TL'])) ? "<small>Telat</small><br/>".$value['TL'] : "";?></td>
+						<td class="text-center"><?php echo (!empty($value['PSW'])) ? "<small>Psw</small><br/>".$value['PSW'] : "";?></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						
+					</tr>
+				<?php endforeach;?>
+				<?php else:?>
+				<tr class="text-center">
+					
+					<td colspan="8">No Data Avaiable</td>
+					
+					
+				</tr>
+				<?php endif;?>
+			</tbody>
+		</table>
+								<!-- END Responsive table with js -->
+	</div>
+</div>
+</body>
+</html>

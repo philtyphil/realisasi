@@ -1,0 +1,243 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><i class="fa fa-cog"></i> View Tree </h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" id="form_tree" href="#ft-tree"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="ft-tree" class="panel-collapse collapse">
+			<div class="portlet-body">
+				<!-- Start The Loading HTML TAG -->
+				<div  id="loading_the_form_tree" style="display:none;margin-left:49.5%;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="{base_url}assets/img/loading.gif" alt="loading"/><br/>
+					<span class="text-center">Memproses Data . . .</span>
+				</div>
+				<div class="dd">
+					<ol class="dd-list">
+						<li class="dd-item" data-id="8">
+							<div class="dd-handle btn-white">
+								Item 8
+								<i class="pull-right bigger-130 fa fa-exclamation-triangle text-warning"></i>
+							</div>
+						</li>
+
+						<li class="dd-item dd-colored" data-id="9">
+							<div class="dd-handle btn-success">Item 9</div>
+
+							<ol class="dd-list">
+								<li class="dd-item" data-id="10">
+									<div class="dd-handle btn-white">
+										Item 10																
+									</div>
+								</li>
+
+								<li class="dd-item" data-id="11">
+									<div class="dd-handle btn-white">
+										<span class="text-warning">Item 11</span>
+										<span class="lighter">
+											&nbsp; with some description
+										</span>
+									</div>
+								</li>
+
+								<li class="dd-item" data-id="12">
+									<div class="dd-handle btn-white">
+										Item 12
+										<div class="pull-right action-buttons">
+											<a href="#">
+												<i class="fa fa-pencil bigger-130 text-info"></i>
+											</a>
+
+											<a href="#">
+												<i class="fa fa-trash-o bigger-130 text-danger"></i>
+											</a>
+										</div>
+									</div>
+
+									<ol class="dd-list">
+									
+										<li class="dd-item" data-id="13">
+											<div class="dd-handle btn-white">
+												Item 13
+												<span class="sticker">
+													<span class="label label-inverse arrowed-in">
+														<i class="fa fa-check bigger-110"></i>
+													</span>
+												</span>
+											</div>
+										</li>
+
+										<li class="dd-item" data-id="14">
+											<div class="dd-handle btn-white">Item 14</div>
+										</li>
+									</ol>
+								</li>
+
+								<li class="dd-item" data-id="15">
+									<div class="dd-handle btn-primary">Item 15</div>
+								</li>
+
+								<li class="dd-item" data-id="16">
+									<div class="dd-handle btn-white">Item 16</div>
+								</li>
+							</ol>
+						</li>
+
+						<li class="dd-item" data-id="17">
+							<div class="dd-handle btn-white">Item 17</div>
+						</li>
+					</ol>
+				</div>
+						
+			</div>
+			
+		</div>
+		</div>
+		
+	</div>
+	<div class="col-lg-12">
+		<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><i class="fa fa-cog"></i> Manage Site </h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" id="form_action" href="#ft-1"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="ft-1" class="panel-collapse collapse">
+			<div class="portlet-body">
+				<!-- Start The Loading HTML TAG -->
+				<div  id="loading_the_form" style="display:none;margin-left:49.5%;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="{base_url}assets/img/loading.gif" alt="loading"/><br/>
+					<span class="text-center">Memproses Data . . .</span>
+				</div>
+			   <!-- End Of The Loading File HTML TAG-->
+				<form class="form-horizontal the-form" role="form" method="post">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Nama Akun</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="nama_akun" placeholder="Masukan Nama Akun">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Parent Akun</label>
+						<div class="col-sm-6">
+							<select class="form-control selectpicker" id="parent_akun" name='menu' onchange="write_desc(this.value)" data-live-search="true">
+								<option value="0"> -- No Parent -- </option>
+								<?php $group = 1;$hold=0;?>
+								<?php foreach($menu_parent as $key => $value):?>
+								<?php if($hold > 0 && $group != 1 && strpos($value['fld_menudsc'], ">") === false):?>
+								<?php $hold = 0 ;$group=1;echo "</optgroup>";?>
+								<?php endif;?>
+								<?php if(strpos($value['fld_menudsc'], ">") === false && $group != $value['parent'] && $hold == 0):?>
+								<?php $hold=1;$menudesc=$value['fld_menudsc'];echo "<optgroup label='".$value['fld_menudsc']."'>";?>
+								<?php endif;?>
+								<?php $group=$value['parent'];?>
+								<option value="<?php echo $value['fld_menuid'];?>"><?php echo $value['fld_menudsc'];?></option>
+								
+								<?php endforeach;?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Url</label>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<input type="text" class="form-control" id="url" placeholder="Your url" >
+								<span class="input-group-addon"><i class="fa fa-link"></i></span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<input type="text" class="form-control" id="desc" placeholder="Description Ex: Akun > Akun1 > Akun2" readonly>
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Status</label>
+						<div class="col-sm-6">
+							<div class="tcb">
+								<label>
+									<input type="radio" name="status"  value="1" class="tc tc-info" checked/>
+									<span class="labels"> Aktif </span>
+								</label>
+								&nbsp;
+								<label>
+									<input type="radio" class="tc" name="status" value="0"/>
+									<span class="labels"> Tidak Aktif</span>
+								</label>
+							</div>
+							
+						</div>
+					</div>
+					<div class="form-actions">
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="button" class="btn btn-info" id="view_list_akun" onClick="load_akun()">View</button>
+								<button type="button" id="button_action" class="btn btn-primary">Submit</button>
+								<button type="button" class="btn" onClick="{base_url}home">Cancel</button>
+								<!-- :ssstttthhh.. Secreat -->
+								<input type="hidden" id="your_action" value="add"/>
+								<input type="hidden" id="id" value=""/>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		</div>
+		
+	</div>
+	
+</div>	
+<div class="row" id="list_akun" >
+	<div class="col-lg-12">
+		<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4><i class="fa fa-cog"></i> List Akun </h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" href="#ft-6"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="ft-6" class="panel-collapse collapse in">
+			<div class="portlet-body" id="load_akun">
+				<button class="btn btn-primary btn-sm btn-circle btn-line" type="button" id="form_show"><i class="fa fa-plus icon-only"></i></button>
+				<button class="btn btn-info btn-sm btn-circle btn-line" type="button" id="form_tree_button"><i class="fa fa-tree icon-only"></i></button>
+				<table id="menu" class="datatable table table-hover table-striped table-bordered tc-table">
+					<thead>
+						<tr >
+							<th class="text-center">Nama Menu</th>
+							<th class="text-center">Parent</th>
+							<th class="text-center" data-class="expand">Url</th>
+							<th class="text-center" data-hide="phone,tablet">Deskripsi</th>
+							<th class="text-center" data-hide="phone,tablet">Order</th>
+							<th class="text-center" data-hide="phone,tablet">Status</th>
+							<th class="text-center" data-hide="phone,tablet">Action</th>
+						</tr>
+					</thead>
+					<tbody ></tbody>
+				</table>
+							
+			</div>
+		</div>
+		</div>
+	</div>
+</div>	

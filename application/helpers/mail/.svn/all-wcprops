@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/ibaliu/!svn/ver/54/trunk/application/helpers/mail
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ibaliu/!svn/ver/54/trunk/application/helpers/mail/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ibaliu/!svn/ver/54/trunk/application/helpers/mail/class.pop3.php
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ibaliu/!svn/ver/54/trunk/application/helpers/mail/class.smtp.php
+END

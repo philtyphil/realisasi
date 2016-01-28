@@ -1,0 +1,59 @@
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4><i class="fa fa-user"></i> EDIT DAFTAR MASTER <small class="text-white">KKKS Realisasi</small></h4>
+		</div>
+		<div class="portlet-widgets">
+			<a data-toggle="collapse" data-parent="#accordion" href="#tabs-4"><i class="fa fa-chevron-down"></i></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="portlet-body">
+		<form action='#' class="form_edit_master"  role="form" method="post">
+			<table class="table table-bordered table-hover">
+			<thead></thead>
+			<tbody>
+				<input type="hidden" value="<?php echo encode($id);?>" name="id"/>
+				<tr class='text-center'>
+					<td>Group</td>
+					<td>
+						<div class="input-group">
+							<input class="form-control" name="group" type="text" placeholder="Masukan Group" value="MASTER" readonly/>
+							<span class="input-group-addon">
+								<i class="fa fa-lock"></i>
+							</span>
+						</div>
+					</td>
+				</tr>
+				<tr class='text-center'>
+					<td>Code</td>
+					<td><input id="maxL-4" placeholder="Masukan Kode" name="code" class="form-control" type="text" maxlength="8" value="<?php echo htmlentities($code);?>"></td>
+				</tr>
+				<tr class='text-center'>
+					<td>Name</td>
+					<td><input id="maxL-4" placeholder="Masukan Nama" name="name" class="form-control" type="text" maxlength="25" value="<?php echo htmlentities($name);?>"></td>
+				</tr>
+			
+				<tr class='text-center'>
+					<td>Description</td>
+					<td>
+						<textarea id="maxL-3" class="form-control" name="description" rows="2" maxlength="225"><?php echo htmlentities($desc);?></textarea>
+						<span class="help-block "><code><small>Isi Deskripsi master. </small></code></span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" class="text-center">
+						<div class="col-sm-offset-2 col-sm-9">
+							<button class="btn btn-success edit_master_submit" type="button"> 
+								<i class="fa fa-pencil"></i> Edit 
+							</button>
+							<button class="btn " type="button" onclick="cancel()">Cancel</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</form>
+	</div>
+</div>	

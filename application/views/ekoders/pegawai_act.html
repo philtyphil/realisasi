@@ -1,0 +1,258 @@
+<div class="row">
+	<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Edit Data Pegawai</h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" href="#f-4"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="f-4" class="panel-collapse collapse in">
+			<div class="portlet-body ">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="portlet portlet-basic">
+							<div class="portlet-heading">
+								<div class="portlet-title">
+									<h4>Data Pribadi</h4>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<form role="form" method="post">
+											<div class="form-group ">
+												<label>Nomor Induk Kepegawaian</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="nip" placeholder="Masukan Nomor Induk Kepagawaian" disabled="disabled">
+													<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label>Nama Lengkap</label>
+													<div class="input-group">
+														<input type="text" class="form-control" id="nama" placeholder="Masukan Nama Lengkap">
+														<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													</div>
+											</div>
+											<div class="form-group">
+												<label>Tempat, Tanggal Lahir</label>
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="input-group">
+																<input type="text" class="form-control" placeholder="Tempat Lahir">
+																<span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="input-group input-group-sm">
+																<input type="text" id="ttl" style="height:34px;" class="form-control datepicker" />
+																<span class="input-group-addon">
+																	<i class="fa fa-calendar text-gray"></i>
+																</span>
+															</div>
+														</div>
+													</div>
+
+											</div>
+											<div class="form-group">
+												<label>Jenis Kelamin</label>
+
+													<div class="row">
+														<label class="tcb-inline col-sm-3">
+															<input type="radio" name="sex"  value="1" class="tc tc-success" checked>
+															<span class="labels"> Laki-Laki</span>
+														</label>
+														<label class="tcb-inline col-sm-3">
+															<input type="radio" name="sex"  value="2" class="tc tc-info">
+															<span class="labels"> Perempuan</span>
+														</label>													
+													</div>
+
+											</div>
+											
+											<div class="form-group">
+												<label>Agama</label>
+												<select class="form-control selectpicker">
+													<?php foreach($agama as $key => $value) :?>
+													<option value="<?php echo $value['fld_tyvalcd'];?>"><?php echo $value['fld_tyvalnm'];?></option>
+													<?php endforeach;?>
+												</select>
+											</div>
+											
+											<div class="form-group">
+												<label>Pendidikan Terakhir</label>
+												<select class="form-control selectpicker">
+													<?php foreach($pendidikan as $key => $value) :?>
+													<option value="<?php echo $value['fld_tyvalcd'];?>"><?php echo $value['fld_tyvalnm'];?></option>
+													<?php endforeach;?>
+												</select>
+											</div>
+											
+											<div class="form-group ">
+												<label>Alamat</label>
+												<textarea id="maxL-4" class="form-control" placeholder="Alamat Pegawai." rows="2" maxlength="225"></textarea>
+											</div>
+
+										</form>
+									</div>
+									<!-- :start TAB kiri | DATA KEPEGAWAIAN-->
+									<div class="col-sm-6">
+										<form role="form" method="post">
+											<div class="form-group">
+												<label>Kodepos</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="kodepos" placeholder="Masukan Kodepos">
+													<span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<label>Kota</label>
+												<select class="form-control selectpicker" data-live-search="true">
+													<?php foreach($kota as $key => $value) :?>
+													<option value="<?php echo $value['fld_cityid'];?>"><?php echo $value['fld_citynm'];?></option>
+													<?php endforeach;?>
+												</select>
+											</div>
+											
+											<div class="form-group">
+												<label>Provinsi</label>
+												<select class="form-control selectpicker" data-live-search="true">
+													<?php $holder = "";$first = 1;?>
+													<?php foreach($provinsi	 as $key => $value) :?>
+													<?php 
+														if($value['fld_pulau'] != $holder)
+														{
+															if($first != 1)
+															{
+																echo '</optgroup>';
+															}
+															$holder = $value['fld_pulau'];
+															echo '<optgroup label="'.$value['fld_pulau'].'">';
+															$first++;
+														}
+
+													?>
+													
+													<option value="<?php echo $value['fld_proveid'];?>"><?php echo $value['fld_provenm'];?></option>
+													<?php endforeach;?>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Nomor Telepon</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="no_telp" placeholder="Masukan Nomor Telepon">
+													<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<label>Nomor Handphone</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="no_hp" placeholder="Masukan Nomor Handphone">
+													<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label>Nomor KTP</label>
+												<div class="input-group">
+													<input type="text" class="form-control" id="no_hp" placeholder="Masukan Nomor KTP">
+													<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+												</div>
+											</div>
+											
+										</form>
+									</div>
+									<!-- :end TAB kiri | DATA KEPEGAWAIAN-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="portlet portlet-basic">
+						<div class="portlet-heading">
+							<div class="portlet-title">
+								<h4><i class="fa fa-list-alt"></i> Data Kepegawaian</h4>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="row">
+								<div class="col-sm-6">
+									<form role="form" method="post">
+										<div class="form-group">
+											<label>Mulai Bekerja di BGR</label>
+											<div class="input-group">
+												<input type="text" id="ttl" style="height:34px;" class="form-control datepicker" />
+												<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>Status Kepegawaian</label>
+											<select class="form-control selectpicker">
+												<?php foreach($status_pegawai as $key => $value) :?>
+												<option value="<?php echo $value['fld_tyvalid'];?>"><?php echo $value['fld_tyvalnm'];?></option>
+												<?php endforeach;?>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>Golongan</label>
+											<select class="form-control selectpicker">
+												<?php foreach($golongan as $key => $value) :?>
+												<option value="<?php echo $value['fld_tyvalid'];?>">Golongan &nbsp; <?php echo $value['fld_tyvalnm'];?></option>
+												<?php endforeach;?>
+											</select>
+										</div>
+										
+										<div class="form-group">
+											<label>Status Keluarga</label>
+											<select class="form-control selectpicker">
+												<?php foreach($status_keluarga as $key => $value) :?>
+												<option value="<?php echo $value['fld_tyvalid'];?>"><?php echo $value['fld_tyvalnm'];?></option>
+												<?php endforeach;?>
+											</select>
+										</div>
+										
+						
+									</form>
+								</div>
+								<div class="col-sm-6">
+									<form role="form" method="post">
+										
+										<div class="form-group">
+											<label>Pegawai Kantor BGR</label>
+											<select class="form-control selectpicker">
+												<?php foreach($lokasi as $key => $value) :?>
+												<option value="<?php echo $value['lokcd'];?>"><?php echo $value['lokasi'];?></option>
+												<?php endforeach;?>
+											</select>
+										</div>
+										
+										<div class="form-group">
+											<label>Lokasi Bekerja</label>
+											<select class="form-control selectpicker">
+												<?php foreach($status_keluarga as $key => $value) :?>
+												<option value="<?php echo $value['fld_tyvalid'];?>"><?php echo $value['fld_tyvalnm'];?></option>
+												<?php endforeach;?>
+											</select>
+										</div>
+						
+									</form>
+								</div>
+							</div>
+						</div>
+										
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+</div>
+</div>
+									

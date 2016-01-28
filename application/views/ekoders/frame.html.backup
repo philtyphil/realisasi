@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{title}</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HRD - BGR">
+    <meta name="author" content="@philtyphils | 08118779995">
+	<link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+ 
+    <link rel="stylesheet" href="{base_url}assets/{template}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{base_url}assets/{template}/css/fonts.css">
+	<link rel="stylesheet" href="{base_url}assets/{template}/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{base_url}assets/{template}/css/plugins/bootstrap-select/bootstrap-select.min.css" >
+	<link rel="stylesheet" href="{base_url}assets/{template}/css/plugins/datetime/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="{base_url}assets/{template}/css/plugins/bootstrap-datepicker/datepicker.css">
+	<link rel="stylesheet" href="{base_url}assets/{template}/css/plugins/footable/footable.min.css">
+
+	<link rel="stylesheet" type="text/css" href="{base_url}assets/{template}/css/plugins/gritter/jquery.gritter.css" />	
+	
+	
+	<link rel="stylesheet" href="{base_url}assets/{template}/css/plugins/jqueryui/jquery-ui.min.css" />
+	<link id="qstyle" rel="stylesheet" href="{base_url}assets/{template}/css/themes/style.css">
+	
+	
+    <!-- Add custom CSS here -->
+
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="{base_url}assets/{template}/js/html5shiv.js"></script>
+    <script src="{base_url}assets/{template}/js/respond.min.js"></script>
+    <![endif]-->
+	
+</head>
+
+  <body>
+	<div id="wrapper">
+		<div id="main-container">		
+				<!-- BEGIN TOP NAVIGATION -->
+				<nav class="navbar-top" role="navigation">
+					<!-- BEGIN BRAND HEADING -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".top-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+						<div class="navbar-brand">
+							<a href="index.html">
+								<img src="assets/images/logo.png" alt="logo" class="img-responsive">
+							</a>
+						</div>
+					</div>
+					<!-- END BRAND HEADING -->
+					<div class="nav-top">
+						<!-- BEGIN RIGHT SIDE DROPDOWN BUTTONS -->
+							<ul class="nav navbar-right">
+								<li class="dropdown">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+										<i class="fa fa-bars"></i>
+									</button>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-envelope"></i> <span class="badge up badge-primary">2</span></a>
+											<ul class="dropdown-menu dropdown-scroll dropdown-messages">
+												<li class="dropdown-header">
+													<i class="fa fa-envelope"></i> 2 New Messages
+												</li>
+												<li id="messageScroll">
+													<ul class="list-unstyled">
+														<li>
+															<a href="#">
+																<div class="row">
+																	<div class="col-xs-2">
+																		<img class="img-circle" src="assets/images/user-profile-1.jpg" alt="">
+																	</div>
+																	<div class="col-xs-10">
+																		<p>
+																			<strong>John Smith</strong>: Hi again! I wanted to let you know that the order...
+																		</p>
+																		<p class="small">
+																			<i class="fa fa-clock-o"></i> 5 minutes ago
+																		</p>
+																	</div>
+																</div>
+															</a>
+														</li>
+														<li>
+															<a href="#">
+																<div class="row">
+																	<div class="col-xs-2">
+																		<img class="img-circle" src="assets/images/user-profile-2.jpg" alt="">
+																	</div>
+																	<div class="col-xs-10">
+																		<p>
+																			<strong>Roddy Austin</strong>: Thanks for the info, if you need anything...
+																		</p>
+																		<p class="small">
+																			<i class="fa fa-clock-o"></i> 3:39 PM
+																		</p>
+																	</div>
+																</div>
+															</a>
+														</li>
+													</ul>
+												</li>
+												<li class="dropdown-footer">
+													<a href="#">
+														Read All Messages
+													</a>
+												</li>
+											</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-bell"></i> <span class="badge up badge-success">3</span>
+									</a>
+										<ul class="dropdown-menu dropdown-scroll dropdown-alerts">
+											<li class="dropdown-header">
+												<i class="fa fa-bell"></i> 3 New Alerts
+											</li>
+											<li id="alertScroll">
+												<ul class="list-unstyled">
+													<li>
+														<a href="#">
+															<div class="alert-icon bg-info pull-left">
+																<i class="fa fa-download"></i>
+															</div>
+																Downloads <span class="badge badge-info pull-right">16</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<div class="alert-icon bg-success pull-left">
+																<i class="fa fa-cloud-upload"></i>
+															</div>
+																Server #8 Rebooted <span class="small pull-right"><strong><em>12 hours ago</em></strong></span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<div class="alert-icon bg-danger pull-left">
+																<i class="fa fa-bolt"></i>
+															</div>
+																Server #8 Crashed <span class="small pull-right"><strong><em>12 hours ago</em></strong></span>
+														</a>
+													</li>
+												</ul>
+											</li>
+											<li class="dropdown-footer">
+												<a href="#">
+													View All Alerts
+												</a>
+											</li>
+										</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-tasks"></i> <span class="badge up badge-info">7</span>
+									</a>
+										<ul class="dropdown-menu dropdown-scroll dropdown-tasks">
+											<li class="dropdown-header">
+												<i class="fa fa-tasks"></i> 10 Pending Tasks
+											</li>
+											<li id="taskScroll">
+												<ul class="list-unstyled">
+													<li>
+														<a href="#">
+															<p>
+																Purchase Order #439 <span class="pull-right"><strong>52%</strong></span>
+															</p>
+															<div class="progress progress-striped">
+																	<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" style="width: 52%;"></div>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>
+																March Content Update <span class="pull-right"><strong>14%</strong></span>
+															</p>
+															<div class="progress">
+																<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" style="width: 14%;"></div>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>
+																Client #42 Data Scrubbing <span class="pull-right"><strong>68%</strong></span>
+															</p>
+															<div class="progress progress-striped">
+																<div class="progress-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>
+																PHP Upgrade Server #6 <span class="pull-right"><strong>85%</strong></span>
+															</p>
+															<div class="progress">
+																<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+															</div>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<p>
+																Malware Scan <span class="pull-right"><strong>66%</strong></span>
+															</p>
+															<div class="progress progress-striped active">
+																<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%;"></div>
+															</div>
+														</a>
+													</li>
+												</ul>
+											</li>
+											<li class="dropdown-footer">
+												<a href="#">
+													View All Tasks
+												</a>
+											</li>
+										</ul>
+								</li>
+								<!--Speech Icon-->
+								<li class="dropdown">
+									<a href="#" class="speech-button">
+										<i class="fa fa-microphone"></i>
+									</a>
+								</li>
+								<!--Speech Icon-->
+								<li class="dropdown user-box">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<span class="user-info"><?php echo ucfirst($this->session->userdata('username'));?></span> <b class="caret"></b>
+									</a>
+										<ul class="dropdown-menu dropdown-user">
+											<li>
+												<a href="{base_url}">
+													<i class="fa fa-user"></i> My Profile
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<i class="fa fa-gear"></i> Settings
+												</a>
+											</li>											
+											<li>
+												<a href="{base_url}login/logout">
+													<i class="fa fa-power-off"></i> Logout
+												</a>
+											</li>
+										</ul>
+								</li>
+								<!--Search Box-->
+								<li class="dropdown nav-search-icon">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-search"></span>
+									</a>
+									<ul class="dropdown-menu dropdown-search">
+										<li>
+											<div class="search-box">
+												<form class="" role="search">
+													<input type="text" class="form-control" placeholder="Search" />
+												</form>
+											</div>
+										</li>
+									</ul>
+								</li>
+								<!--Search Box-->
+							</ul>
+						<!-- END RIGHT SIDE DROPDOWN BUTTONS -->							
+						<!-- BEGIN TOP MENU -->
+							<div class="collapse navbar-collapse top-collapse">
+								<!-- .nav -->
+								<ul class="nav navbar-left navbar-nav">
+									<li><a href="index.html">Dashboard</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											Components <b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="elements-ui.html">Elements</a></li>
+											<li><a href="button-ui.html">Buttons & Icons</a></li>
+											<li><a href="portlet.html">Portlet</a></li>
+											<li><a href="jquery-ui.html">jQuery UI</a></li>
+										</ul>
+									</li>
+									<li><a href="front/index.html">FrontEnd <span class="badge badge-primary">New</span></a></li>
+								</ul><!-- /.nav -->
+							</div>
+						<!-- END TOP MENU -->
+					</div><!-- /.nav-top -->
+				</nav><!-- /.navbar-top -->
+				<!-- END TOP NAVIGATION -->
+
+				
+				<!-- BEGIN SIDE NAVIGATION -->				
+				<nav class="navbar-side" role="navigation">
+					<div class="navbar-collapse sidebar-collapse collapse">
+
+						<!-- BEGIN SHORTCUT BUTTONS -->
+						<div class="media">							
+							<ul class="sidebar-shortcuts">
+								<li><a class="btn"><i class="fa fa-user icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-envelope icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-th icon-only"></i></a></li>
+								<li><a class="btn"><i class="fa fa-gear icon-only"></i></a></li>
+							</ul>	
+						</div>
+						<!-- END SHORTCUT BUTTONS -->	
+							
+						
+						
+						<ul id="side" class="nav navbar-nav side-nav">
+							<!-- BEGIN SIDE NAV MENU -->							
+							<!-- Navigation category -->
+							<li>
+								<h4>Navigation</h4> 								
+							</li>
+							<!-- END Navigation category -->
+							<?php if($this->session->userdata('VIEW_HOME_ACCESS') == 1):?>
+							<li>
+								<a href="{base_url}home">
+									<i class="fa fa-home"></i> Home
+								</a>
+							</li>
+							<?php endif; ?>
+							<!-- BEGIN COMPONENTS DROPDOWN -->
+						
+							<!-- :start Menu Master -->
+							<?php if($this->session->userdata('VIEW_ADM_KEPEGAWAIAN_ACCESS') == 1):?>
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#adm_kepegawaian">
+									<i class="fa fa-list"></i> Master <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="adm_kepegawaian">
+											<li>
+											<a href="{base_url}pegawai/">
+												<i class="fa fa-angle-double-right"></i> Pegawai
+											</a>
+										</li>
+										
+									
+										
+										
+									</ul>
+							</li>
+							<?php endif;?>
+							<!-- :start Menu Master -->
+							
+							<!-- :start Menu Data Kepegawaian -->
+							<?php if($this->session->userdata('VIEW_ADM_KEPEGAWAIAN_ACCESS') == 1):?>
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#adm_kepegawaian">
+									<i class="fa fa-list"></i> Administrasi <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="adm_kepegawaian">
+											<li>
+											<a href="{base_url}adm_kepegawaian/">
+												<i class="fa fa-angle-double-right"></i> Kehadiran
+											</a>
+										</li>
+										<li>
+											<a href="{base_url}adm_kepegawaian/cuti/">
+												<i class="fa fa-angle-double-right"></i> CUTI
+											</a>
+										</li>
+										<li>
+											<a href="{base_url}adm_kepegawaian/ijin/">
+												<i class="fa fa-angle-double-right"></i> IZIN 
+											</a>
+										</li>
+										<li>
+											<a href="{base_url}adm_kepegawaian/dl/">
+												<i class="fa fa-angle-double-right"></i> DINAS LUAR 
+											</a>
+										</li>
+									
+										
+										
+									</ul>
+							</li>
+							<?php endif;?>
+							<!-- :start Menu Status Pekerja -->
+							<?php if($this->session->userdata('VIEW_MANAGEMENT_SITE_ACCESS') == 1):?>
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#Laporan">
+									<i class="fa fa-file"></i> Laporan <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="Laporan">
+										<li>
+											<a href="{base_url}laporan">
+												<i class="fa fa-angle-double-right"></i> Status Pekerja
+											</a>
+										</li>
+									</ul>
+							</li>
+							<?php endif;?>
+							<!-- :end Menu Status Pekerja -->
+							<?php if($this->session->userdata('VIEW_ADM_KEPEGAWAIAN_ACCESS') == 1):?>
+							<li class="panel">
+								<a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#management_site">
+									<i class="fa fa-cogs"></i> Management Site <span class="fa arrow"></span>
+								</a>
+									<ul class="collapse nav" id="management_site">
+										<li>
+											<a href="{base_url}management_site">
+												<i class="fa fa-angle-double-right"></i> Menu Access
+											</a>
+										</li>
+									</ul>
+							</li>
+							<?php endif;?>
+							<!-- :end Menu Data Kepegawaian -->
+							
+
+						</ul><!-- /.side-nav -->
+
+						<div class="sidebar-labels">
+							<h4>Labels</h4>							
+							<ul>
+								<li><a href="#"><i class="fa fa-circle-o text-primary"></i> My Recent <span class="badge badge-primary">3</span></a></li>
+								<li><a href="#"><i class="fa fa-circle-o text-success"></i> Background</a></li>
+							</ul>
+						</div>
+						
+						<div class="sidebar-alerts">							
+							<div class="alert fade in">
+								<span>Sales Report</span>
+								<div class="progress progress-mini progress-striped active no-margin-bottom">
+									<div class="progress-bar progress-bar-primary" style="width: 36%"></div>
+								</div>
+								<small>Calculating daily bias... 36%</small>
+							</div>
+						</div>
+						
+					</div><!-- /.navbar-collapse -->
+				</nav><!-- /.navbar-side -->
+				<!-- END SIDE NAVIGATION -->
+				
+
+				<!-- BEGIN MAIN PAGE CONTENT -->
+				<div id="page-wrapper">
+					<!-- BEGIN PAGE HEADING ROW -->
+						<div class="row">
+							<div class="col-lg-12">
+								<!-- BEGIN BREADCRUMB -->
+								<div class="breadcrumbs">
+									<ul class="breadcrumb">
+										<?php 
+									$uri = explode("/",$_SERVER["REQUEST_URI"]);
+								
+									if(count($uri) > 2)
+									{
+										$string = "<li><a href='{base_url}home'>Home</a></li>";
+										
+										for($i=2;$i<count($uri);$i++)
+										{
+											if($i != count($uri) -2)
+											{
+												
+												$string .= '<li><a href="{base_url}'.$uri[2].'">'.str_replace("_"," ",ucfirst($uri[$i])).'</a></li>';
+											}
+											else
+											{
+												$string .= '<li class="active">'.$uri[$i].'</li>';
+											}
+										}
+										echo $string;
+									}
+									
+									
+								?>
+									</ul>
+									
+									<div class="b-right hidden-xs">
+										<ul>
+											<li><a href="#" title=""><i class="fa fa-signal"></i></a></li>
+											<li><a href="#" title=""><i class="fa fa-comments"></i></a></li>
+											<li class="dropdown"><a href="#" title="" data-toggle="dropdown"><i class="fa fa-plus"></i><span> Tasks</span></a>
+												<ul class="dropdown-menu dropdown-primary dropdown-menu-right">
+													<li><a href="#">Add new task</a></li>
+													<li><a href="#">Statement</a></li>
+													<li><a href="#">Settings</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- END BREADCRUMB -->
+								
+								
+								<!-- PAGE TITLE ROW -->
+							
+								
+									
+								
+								
+								<!-- /#ek-layout-button -->	
+								<div class="qs-layout-menu">
+									<div class="btn btn-gray qs-setting-btn" id="qs-setting-btn">
+										<i class="fa fa-cog bigger-150 icon-only"></i>
+									</div>
+									<div class="qs-setting-box" id="qs-setting-box">
+									
+										<div class="hidden-xs hidden-sm">
+											<span class="bigger-120">Layout Options</span>
+											
+											<div class="hr hr-dotted hr-8"></div>
+											<label>
+												<input type="checkbox" class="tc" id="fixed-navbar" />
+													<span id="#fixed-navbar" class="labels"> Fixed NavBar</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="fixed-sidebar" />
+													<span id="#fixed-sidebar" class="labels"> Fixed NavBar+SideBar</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="sidebar-toggle" />
+													<span id="#sidebar-toggle" class="labels"> Sidebar Toggle</span>
+											</label>
+											<label>
+												<input type="checkbox" class="tc" id="in-container" />
+													<span id="#in-container" class="labels"> Inside<strong>.container</strong></span>
+											</label>
+										
+											<div class="space-4"></div>
+										</div>
+										
+										<span class="bigger-120">Color Options</span>
+										
+										<div class="hr hr-dotted hr-8"></div>
+										
+										<label>
+											<input type="checkbox" class="tc" id="side-bar-color" />
+											<span id="#side-bar-color" class="labels"> SideBar (Light)</span>
+										</label>
+										
+										<ul>									
+											<li><button class="btn" style="background-color:#d15050;" onclick="swapStyle('assets/css/themes/style.css')"></button></li>
+											<li><button class="btn" style="background-color:#86618f;" onclick="swapStyle('assets/css/themes/style-1.css')"></button></li> 
+											<li><button class="btn" style="background-color:#ba5d32;" onclick="swapStyle('assets/css/themes/style-2.css')"></button></li>
+											<li><button class="btn" style="background-color:#488075;" onclick="swapStyle('assets/css/themes/style-3.css')"></button></li>
+											<li><button class="btn" style="background-color:#4e72c2;" onclick="swapStyle('assets/css/themes/style-4.css')"></button></li>
+										</ul>
+										
+									</div>
+								</div>
+								<!-- /#ek-layout-button -->		
+								
+							</div><!-- /.col-lg-12 -->
+						</div><!-- /.row -->
+					<!-- END PAGE HEADING ROW -->	
+						{content}
+					<!-- BEGIN FOOTER CONTENT -->		
+						<div class="footer">
+							<div class="footer-inner">
+								<!-- basics/footer -->
+								<div class="footer-content">
+								Page rendered in <strong>{elapsed_time}</strong>&nbsp;seconds. &nbsp;&nbsp;	&copy; <?php date("Y");?> <a href="mailto:philtyphils@gmail.com">BGR Indonesia</a>, All Rights Reserved. 
+								</div>
+								<!-- /basics/footer -->
+							</div>
+						</div>
+						<button type="button" id="back-to-top" class="btn btn-primary btn-sm back-to-top">
+							<i class="fa fa-angle-double-up icon-only bigger-110"></i>
+						</button>
+					<!-- END FOOTER CONTENT -->
+						
+				</div><!-- /#page-wrapper -->	  
+			<!-- END MAIN PAGE CONTENT -->
+		</div>  
+	</div> 
+	 
+    <!-- core JavaScript -->
+    <script src="{base_url}assets/{template}/js/jquery.min.js"></script>
+    <script src="{base_url}assets/{template}/js/bootstrap.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/pace/pace.min.js"></script>
+		
+	<!-- PAGE LEVEL PLUGINS JS -->
+	<script src="{base_url}assets/{template}/js/plugins/footable/footable.min.js"></script>	
+	
+	<script src="{base_url}assets/{template}/js/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/datatables/datatables.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/datatables/datatables.responsive.js"></script>
+	
+    <!-- Themes Core Scripts -->	
+	<script src="{base_url}assets/{template}/js/main.js"></script>
+
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="{base_url}assets/{template}/js/speech-commands.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/gritter/jquery.gritter.min.js"></script>	
+	
+	<!-- initial page level scripts for examples -->
+	<script src="{base_url}assets/{template}/js/plugins/slimscroll/jquery.slimscroll.init.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/footable/footable.init.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/datetime/bootstrap-datetimepicker.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/bootbox/bootbox.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+	<script src="{base_url}assets/{template}/js/plugins/jqueryui/jquery-ui.min.js"></script>
+	<script>
+	//for tables checkbox demo
+		jQuery(function($) {
+			$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+			});
+		});
+	</script>
+	<script type='text/javascript'>
+	{js}
+	</script>
+  </body>
+</html>

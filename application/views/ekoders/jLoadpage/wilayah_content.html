@@ -1,0 +1,58 @@
+<script src="{base_url}assets/{template}/js/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- <script src="{base_url}assets/{template}/js/plugins/data-tables/jquery.dataTables.js"></script> jQUery 1.9q-->
+	<table id="laporan" class="datatable table table-hover table-striped table-bordered tc-table">
+		<thead>
+			<tr >
+				<th class="text-center" data-class="expand">No</th>
+				<th class="text-center" data-hide="phone,tablet">Kode Wilayah</th>
+				<th class="text-center" data-hide="phone,tablet">Wilayah</th>
+                <th class="text-center" data-hide="phone,tablet">Level</th>
+				<th class="text-center" data-hide="phone,tablet">Remark</th>
+				<th class="text-center" data-hide="phone,tablet">Fungsi</th>
+
+			</tr>
+		</thead>
+		<tbody class="text-center"></tbody>
+	</table>
+
+<script type="text/javascript">
+// Products list example 
+$(document).ready(function () {
+    var responsiveHelper = undefined;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone : 480
+    };
+    var tableElement = $('#laporan');
+
+    tableElement.dataTable({
+        "paginationType": 'bootstrap',
+        "language"      : {
+            'lengthMenu': "_MENU_ ",
+			//"zeroRecords": "Nothing found - sorry",
+			//"info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "Data Pegawai Tidak Ditemukan",
+            "infoFiltered": "(Show from _PAGES_ Total records)"
+        },
+		"iDisplayLength":10,
+        "processing": true,
+        "serverSide": true,
+		"order": [[ 0, 'asc' ], [ 2, 'asc' ]],
+		"ajax"		: '{base_url}wilayah/json/{id_master}/{level}',
+		// for more option please email philtyphils@gmail.com;08118779995
+		
+        preDrawCallback: function () {
+            // Initialize the responsive datatables helper once.
+            if (!responsiveHelper) {
+                responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
+            }
+        },
+        rowCallback    : function (nRow) {
+            responsiveHelper.createExpandIcon(nRow);
+        },
+        drawCallback   : function (oSettings) {
+            responsiveHelper.respond();
+        }
+    });
+});
+</script>	

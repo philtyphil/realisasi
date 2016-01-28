@@ -1,0 +1,261 @@
+<div class="portlet">
+	<div class="portlet-heading dark">
+		<div class="portlet-title">
+			<h4><i class="fa fa-user"></i> DATA ABSENSI <small class="text-white">pegawai BGR</small></h4>
+		</div>
+		<div class="portlet-widgets">
+			<a data-toggle="collapse" data-parent="#accordion" href="#tabs-4"><i class="fa fa-chevron-down"></i></a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div id="tabs-4" class="panel-collapse collapse in">
+		<div class="portlet-body">
+
+
+			<div class="tc-tabsbar lg arrow"><!-- Nav tabs style 8-->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab19" data-toggle="tab"><i class="fa fa-user"></i>  Data Absensi </a></li>
+					<li><a href="#tab20" data-toggle="tab"><i class="fa fa-pencil"></i> Insert Absensi</a></li>
+					<li><a href="#tab21" data-toggle="tab"><i class="fa fa-tasks"></i> Rekap Absensi</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab19">
+						<!-- :Start Data Absensi - @philtyphils -->
+							<div class="portlet-body">
+								<form class="form-horizontal" role="form" method="post">
+									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">NIP</label>
+										<div class="col-sm-4">
+											
+											<input id="nip" type="text" class="form-control" maxlength="25" value="<?php echo $this->session->userdata('fld_empnik');?>" readonly/>
+											<span class="help-block"><code>Nomor Induk Pegawai</code></span>
+											
+										</div>
+									</div>
+									
+									
+									<?php if(in_array($this->session->userdata('datusergrpid'),	array("1"),true)):?>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Nama</label>
+										<div class="col-sm-4">
+										
+											<select class="form-control nama_user" data-style="btn-info" data-live-search="true" id="username" onChange="nama_clicked()">
+											<?php foreach($pegawai as $key => $value):?>
+												
+												<?php if($this->session->userdata['fld_empnik'] == $value['fld_empnik'])
+{
+													$selected = "selected";}else{$selected="";}
+												?>
+												<option value="<?php echo $value['fld_empnik'];?>" <?php echo $selected;?>><?php echo $value['fld_empnik']." - ".$value['fld_empnm'];?></option>
+											<?php endforeach;?>
+											</select>
+											<span class="help-block"><code>* Nama Pegawai <small>(Click pada form untuk memilih Pegawai)</small></code></span>
+										</div>
+										
+									</div>
+									<?php else: ?>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Nama</label>
+										<div class="col-sm-4">
+											<input id="username" type="text" class="form-control" maxlength="25" value="<?php echo ucfirst($this->session->userdata('fld_empnm'));?>" readonly/>
+											<span class="help-block"><code>Username</code></span>
+										</div>
+									</div>
+									<?php endif;?>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Bulan</label>
+										<div class="col-sm-3">
+											<?php $selected = "";?>
+										<select class="form-control selectpicker" id="bulan">
+											
+											
+											<?php foreach($tanggal as $key => $value): ?>
+											<?php if($key == date("m")):?>
+											<?php $selected = "selected";?>
+											<?php endif;?>
+											<option value='<?php echo $key;?>' <?php echo $selected;?>><?php echo $value;?></option>
+											<?php $selected = "";?>
+											<?php endforeach; ?>
+											</select>
+				
+										</div>
+										<div class="col-sm-3">
+											<input type="text" id="tahun" value="<?php echo date("Y");?>" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-9">
+												<button class="btn btn-warning" type="button" onclick="cari_click()"><i class="fa fa-search"></i> Cari </button>
+												<button class="btn btn-success" type="button" onclick="print_excel()"><i class="fa fa-file-excel-o"></i> EXCEL </button>
+												<button class="btn btn-primary" type="button" onclick="print_pdf()"><i class="fa fa-file-pdf-o"></i> PDF </button>
+												<button class="btn btn-info" type="button" onclick="print_html()"><i class="fa fa-html5 "></i> HTML </button>
+												<button class="btn " type="button" onclick="cancel()">Cancel</button>
+											</div>
+										</div>
+									</div>
+										
+								</form>
+								
+							</div>
+							<div id="loading" style="display:none;margin-left:49.5%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{base_url}assets/img/loading.gif" alt="loading"/><br/><span class="text-center">Memproses Data . . .</span></div>
+							<div id="load_absensi"></div>
+						<!-- :End DATA ABSENSI -->
+					
+					</div>
+					<div class="tab-pane" id="tab20">
+						<div class="portlet-body">
+						<form class="form-horizontal" role="form" method="post">
+									
+							<div class="form-group">
+								<label class="col-sm-2 control-label">NIP</label>
+								<div class="col-sm-4">
+									
+									<input id="nip_absensi_insert" type="text" class="form-control" maxlength="25" value="<?php echo $this->session->userdata('fld_empnik');?>" readonly/>
+									<span class="help-block"><code>Nomor Induk Pegawai</code></span>
+									
+								</div>
+							</div>
+							
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Nama</label>
+								<div class="col-sm-4">
+								
+									<select class="form-control nama_user_insert" data-style="btn-info" data-live-search="true" id="username_insert" onChange="nama_insert_clicked()">
+									<?php foreach($pegawai as $key => $value):?>
+										
+										<option value="<?php echo $value['fld_empnik'];?>"><?php echo $value['fld_empnik']." - ".$value['fld_empnm'];?></option>
+									<?php endforeach;?>
+									</select>
+									<span class="help-block"><code>* Nama Pegawai <small>(Click pada form untuk memilih Pegawai)</small></code></span>
+								</div>
+								
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Tanggal Absensi</label>
+								<div class="col-sm-4">
+									
+									<div class="input-group date form_time" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+										<span class="input-group-addon">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</span>
+										<input class="form-control" id="tanggal_absensi"/>													
+									</div>
+									<input type="hidden" id="dtp_input2" value="" />
+									<span class="help-block"><code>* Click pada form untuk menampilkan kalender</code></span>
+								</div>
+								
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Jam Absensi</label>
+								<div class="col-sm-2">
+									
+									<div class="input-group date form_time_sec" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+										<span class="input-group-addon">
+											<i class="glyphicon glyphicon-time"></i>
+										</span>
+										<input class="form-control" id="jam_datang" />													
+									</div>
+									<input type="hidden" id="dtp_input3" value="" />
+									<span class="help-block"><code>Jam datang</code></span>
+								</div>
+								<div class="col-sm-2">
+									
+									<div class="input-group date form_time_sec" data-date="" data-date-format="hh:ii" data-link-field="dtp_input4" data-link-format="hh:ii">
+										<span class="input-group-addon">
+											<i class="glyphicon glyphicon-time"></i>
+										</span>
+										<input class="form-control" id="jam_pulang"/>													
+									</div>
+									<input type="hidden" id="dtp_input4" value="" />
+									<span class="help-block"><code>Jam Pulang</code></span>
+								</div>
+								
+							</div>
+							<div class="form-actions">
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-9">
+										<button class="btn btn-primary" id="button_input" type="button" onclick="proses_insert()"><i class="fa fa-pencil"></i> Input</button>
+										
+										<button class="btn " type="button" onclick="cancel()"> Cancel</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div id="loading_insert" style="display:none;margin-left:49.5%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{base_url}assets/img/loading.gif" alt="loading"/><br/><span id="loading_text" class="text-center">Proses Input Data . . .</span></div>
+						<div id="load_absensi_after_insert"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="tab21">
+						<!-- :Start Rekap Absensi - @philtyphils;philtyphils@gmail.com;08118779995 -->
+							<div class="portlet-body">
+								<form class="form-horizontal" role="form" method="post">
+									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Lokasi</label>
+										<div class="col-sm-4">
+										
+											<select class="form-control nama_user" data-style="btn-info" data-live-search="true" id="unit">
+											<?php foreach($lokasi as $key => $value):?>
+												<?php if($this->session->userdata('lokcd') == $value['lokcd'])
+{$selected = "selected";}else{$selected="";}?>
+												<option value="<?php echo encode($value['lokcd']);?>" <?php echo $selected;?>><?php echo $value['loknm']." - ".$value['loktp'];?></option>
+											<?php endforeach;?>
+											</select>
+											<span class="help-block"><code>* Nama Pegawai <small>(Click pada form untuk memilih Pegawai)</small></code></span>
+										</div>
+										
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Bulan</label>
+										<div class="col-sm-3">
+											<?php $selected = "";?>
+										<select class="form-control selectpicker" id="bulan_rekap">
+											
+											
+											<?php foreach($tanggal as $key => $value): ?>
+											<?php if($key == date("m") -1):?>
+											<?php $selected = "selected";?>
+											<?php endif;?>
+											<option value='<?php echo encode($key);?>' <?php echo $selected;?>><?php echo $value;?></option>
+											<?php $selected = "";?>
+											<?php endforeach; ?>
+											</select>
+				
+										</div>
+										<!-- Tahun Rekap - philtyphils@gmail.com;08118779995 -->
+										<div class="col-sm-3">
+											<input type="text" id="tahun_rekap" value="<?php echo date("Y");?>" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-9">
+												<!--<button class="btn btn-warning" type="button" onclick="rekap_click()"><i class="fa fa-search"></i> Cari </button>-->
+												<button class="btn btn-success col-sm-3" type="button" onclick="print_rekap_excel()"><i class="fa fa-file-excel-o"></i> PRINT EXCEL </button>
+												<!-- <button class="btn btn-primary" type="button" onclick="print_pdf()"><i class="fa fa-file-pdf-o"></i> PDF </button> -->
+												<!-- <button class="btn btn-info" type="button" onclick="print_html()"><i class="fa fa-html5 "></i> HTML </button> -->
+												 &nbsp;<button class="btn col-sm-3" type="button" onclick="cancel()">Cancel</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								
+							</div>
+							<div id="loading" style="display:none;margin-left:49.5%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{base_url}assets/img/loading.gif" alt="loading"/><br/><span class="text-center">Memproses Data . . .</span></div>
+							<div id="load_absensi"></div>
+						<!-- :End DATA ABSENSI -->
+					</div>
+				</div>
+			</div><!--nav-tabs style 8-->												
+		</div>
+	</div>
+</div>
+
+
+

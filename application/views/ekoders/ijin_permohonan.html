@@ -1,0 +1,132 @@
+<div class="row">
+	<div class="portlet">
+		<div class="portlet-heading dark">
+			<div class="portlet-title">
+				<h4>Permohonan Ijin Pegawai</h4>
+			</div>
+			<div class="portlet-widgets">
+				<a data-toggle="collapse" data-parent="#accordion" href="#f-4"><i class="fa fa-chevron-down"></i></a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="f-4" class="panel-collapse collapse in">
+			<div class="portlet-body ">
+				<div class="row">	
+					<strong>
+					<p class="text-center">Form Permohonan Ijin</p>
+					<p class="text-center">Datang Terlambat, Pulang Lebih awal, Tidak Masuk Kerja, Keluar Kantor</p>
+					</strong>
+					
+					<br/><br/>
+					
+					<form class="form-horizontal form-ijin" role="form" method="post">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Nomor ID</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="text" class="form-control" name="id"  placeholder="Masukan Nomor Induk Kepagawaian" value="<?php echo $id;?>" readonly>
+									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Nomor NIK</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="nik" name="nik" placeholder="Masukan Nomor Induk Kepagawaian" value="<?php echo $nik;?>" readonly>
+									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Nama Pegawai</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="text" class="form-control" id="nama_pegawai" placeholder="Masukan Nomor Induk Kepagawaian" name="nama_pegawai" value="<?php echo $username;?>" disabled="disabled">
+									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Mohon Ijin Untuk</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<select class="form-control nama_user dropup" name="jenis_ijin" data-droupAuto="false" data-width="550px" data-size="6"  data-style="btn-primary" data-live-search="true" id="jenis_ijin" >
+										<?php foreach($jenis_ijin as $key => $value):?>
+										<option value="<?php echo encode($value['tbl_jnsijinid']."|".$value['tbl_jnsijinkode']);?>"><?php echo $value['tbl_jnsijinnm'];?></option>
+										<?php endforeach;?>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Tanggal</label>
+							<div class="col-sm-6">
+								<div class="row">
+								<div class="col-sm-6">
+									<div class="input-group input-group-sm">
+										<input type="text"  name="tgl_awal" class="form-control datepicker" placeholder="Masukan Tanggal Awal Ijin" />
+										<span class="input-group-addon">
+											<i class="fa fa-calendar text-gray"></i>
+										</span>
+									</div>
+								</div>
+								
+								<div class="col-sm-6" id="tgl_akh" style="display:none;">
+									<div class="input-group input-group-sm">
+										<input type="text" name="tgl_akhir" class="form-control datepicker" placeholder="Masukan Tanggal Akhir Ijin" />
+										<span class="input-group-addon">
+											<i class="fa fa-calendar text-gray"></i>
+										</span>
+									</div>
+								</div>
+								
+								<div class="col-sm-6" id="jam" >
+									<div class="input-group input-group-sm">
+										<div class="input-group input-group-sm date form_time" data-date="" data-date-format="hh:ii p" data-link-field="dtp_input3" data-link-format="hh:ii p">
+											
+											<input class="form-control" />	
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-time"></i>
+											</span>											
+										</div>
+										<input type="hidden" id="dtp_input3" name="jam" value="" /><br/>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Keperluan / Alasan</label>
+							<div class="col-sm-6">
+								<textarea id="keperluan" name="keperluan" style="width:540px;"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Tempat Tujuan</label>
+							<div class="col-sm-6">
+								<textarea id="tmp_tujuan" name="tmp_tujuan" style="width:540px;"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-actions">
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-9">
+									<button class="btn btn-success submit" type="button"> Submit </button>
+									<button class="btn " type="button" onclick="cancel()">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</form>
+									
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

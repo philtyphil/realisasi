@@ -1,0 +1,51 @@
+<div class="row" >
+	<div class="col-lg-12">
+			<!-- START Responsive table with js -->
+		<div class="page-header no-padding-bottom">
+			<h4>Status Pegawai</h4>
+		</div>								
+		<table class="table table-bordered table-hover tc-table table-primary " data-page-size="2" id="table_absensi">
+			<thead>
+				<tr >
+					
+					<th width="120px" class="text-center" rowspan="2">GOLONGAN</th>
+					<th data-toggle="true" class="text-center"  rowspan="2">Jml Pegawai</th>
+					<th data-toggle="true" class="text-center"  rowspan="2">Jml Peg MPP</th>
+					<th class="text-center"  rowspan="2">Jml Pensiun</th>
+					
+					<th data-hide="phone,tablet" class="text-center"  colspan="5">Status Keluarga</th>
+					<th data-hide="phone,tablet" class="text-center"  colspan="2">Masa Kerja</th>
+					
+				</tr>
+				<tr>
+					<th class="text-center">TK</th>
+					<th class="text-center">K0</th>
+					<th class="text-center">K1</th>
+					<th class="text-center">K2</th>
+					<th class="text-center">K3</th>
+					<th class="text-center">&#60; 10thn</th>
+					<th class="text-center">&#62; 10thn</th>
+				</tr>
+			</thead>
+			<tbody>
+				{data}
+				<tr class="text-center">
+					<td ><a href="#" style="color:black;">{golongan}</a></td>
+					<td ><a href="#" style="color:black;">{jml_golongan}</a></td>
+					<td ><a href="#" style="color:black;">{pegawai_mpp}</a></td>
+					<td ><a href="#" style="color:black;">{pensiun}</a></td>
+					<td ><a href="#" style="color:black;">{TK}</a></td>
+					<td ><a href="#" style="color:black;">{K0}</a></td>
+					<td ><a href="#" style="color:black;">{K1}</a></td>
+					<td ><a href="#" style="color:black;">{K2}</a></td>
+					<td ><a href="#" style="color:black;">{K3}</a></td>
+					<td ><a href="#" style="color:black;">{dibwh10thn}</a></td>
+					<td ><a href="#" style="color:black;">{diats10thn}</a></td>
+				</tr>
+				{/data}
+			</tbody>
+		</table>
+								<!-- END Responsive table with js -->
+	</div>
+</div>
+

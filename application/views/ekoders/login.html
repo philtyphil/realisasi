@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="login page">
+    <meta name="author" content="Sulistyo Nur Anggoro - @philtyphils - philtyphils@gmail.com">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="<?php echo config_item('base_url');?>assets/<?php echo $template;?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo config_item('base_url');?>assets/<?php echo $template;?>/css/fonts.css">
+	<link rel="stylesheet" href="<?php echo config_item('base_url');?>assets/<?php echo $template;?>/font-awesome/css/font-awesome.min.css">
+	
+	<!-- PAGE LEVEL PLUGINS STYLES -->
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<link rel="stylesheet" type="text/css" href="<?php echo config_item('base_url');?>assets/<?php echo $template;?>/css/plugins/gritter/jquery.gritter.css" />	
+
+    <!-- Tc core CSS -->
+	<link id="qstyle" rel="stylesheet" href="<?php echo config_item('base_url');?>assets/<?php echo $template;?>/css/themes/style.css">
+	
+	
+    <!-- Add custom CSS here -->
+
+	<!-- End custom CSS here -->
+	
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+	
+  </head>
+
+  <body class="login">
+	<div id="wrapper">
+			<!-- BEGIN MAIN PAGE CONTENT -->
+			
+			<div class="login-container">
+				
+				<!-- BEGIN LOGIN BOX -->
+				<div id="login-box" class="login-box visible">					
+					<p class="bigger-110">
+						<i class="fa fa-key"></i> Please Enter Your Information
+					</p>
+					
+					<div class="hr hr-8 hr-double dotted"></div>
+					
+					<form method="post" action="https://#">
+						<div class="form-group">
+							<div class="input-icon right">
+								<span class="fa fa-key text-gray"></span>
+								<input type="text" id="username" class="form-control" placeholder="Username">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-icon right">
+								<span class="fa fa-lock text-gray"></span>
+								<input type="password" id="password" class="form-control" placeholder="your password">
+							</div>
+						</div>
+						<div class="tcb">
+							<label>
+								<input type="checkbox" class="tc">
+								<span class="labels"> Remember me</span>
+							</label>
+							<a href="#"  class="pull-right btn btn-primary" id="login">Login<i class="fa fa-key icon-on-right"></i></a>
+							<div class="clearfix"></div>
+						</div>				
+						
+						<span style="margin-left:45%;display:none;" id="loading"><img alt="loading" src="<?php echo config_item('loading');?>"/></span>
+						<div class="social-or-login">
+							<span class="text-primary" id="error_text">&nbsp;</span>
+						</div>
+							
+						<div class="space-4"></div>
+					
+						
+
+						<div class="footer-wrap">
+							<span class="text-center" style="margin-left:10%">
+							<small>Monitoring Volume Lifting Minyak &amp; Gas </small><br/> <span style="margin-left:22%"> <small>&copy; <?php echo date("Y");?>   All right reserverd. </small></span>
+							</span>
+							
+							<div class="clearfix"></div>
+						</div>							
+					</form>
+				</div>
+				<!-- END LOGIN BOX -->
+				
+			
+				
+			
+			</div>
+			
+		
+
+
+			<!-- END MAIN PAGE CONTENT --> 
+	</div> 
+	 
+    <!-- core JavaScript -->
+    <script src="assets/<?php echo $template;?>/js/jquery.min.js"></script>
+    <script src="assets/<?php echo $template;?>/js/bootstrap.min.js"></script>
+	<script src="assets/<?php echo $template;?>/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/<?php echo $template;?>/js/plugins/pace/pace.min.js"></script>
+	
+	<!-- PAGE LEVEL PLUGINS JS -->
+	
+    <!-- Themes Core Scripts -->	
+	<script src="assets/<?php echo $template;?>/js/main.js"></script>
+
+	<!-- REQUIRE FOR SPEECH COMMANDS -->
+	<script src="assets/<?php echo $template;?>/js/speech-commands.js"></script>
+	<script src="assets/<?php echo $template;?>/js/plugins/gritter/jquery.gritter.min.js"></script>	
+	
+	<!-- initial page level scripts for examples -->	
+	<script type="text/javascript">
+		$(document).keypress(function(e) {
+			if(e.which == 13) {
+				$("#login").trigger('click');
+			}
+		});
+		$("#login").bind('click',function(){
+			$("#loading").fadeIn('slow');
+			var url 	= "<?php echo config_item('base_url')."login/proses";?>";
+			var data	= {
+				username : $("#username").val(),
+				password : $("#password").val()
+			};
+			$.ajax({
+				type	: "POST",
+				url		: url,
+				data	: data,
+				dataType: "JSON",
+				success	: function(e){
+					$("#loading").fadeOut('slow');
+					if(typeof(e.error_username) != "undefined" && e.error_username != "" && e.error_username.length > 0)
+					{
+						$("#error_text").html(e.error_username);
+					}
+					
+					if(typeof(e.error_password) != "undefined" && e.error_password != "" && e.error_password.length > 0)
+					{
+						$("#error_text").html(e.error_password);
+					}
+					
+					if(typeof(e.error_failed) != "undefined" && e.error_failed != "" && e.error_failed.length > 0)
+					{
+						$("#error_text").html(e.error_failed);
+					}
+					
+					if(typeof(e.success) != "undefined" && e.success != "" && e.success.length > 0)
+					{
+						$("#error_text").html(e.success);
+						window.location.href="<?php echo config_item('base_url');?>home";
+					}
+					
+				},
+				error : function(e)
+				{
+					$("#loading").fadeOut('fast');
+					$("#error_text").html("Username & Password Not Found!!");
+				}
+			});
+		
+		});
+		
+	</script>
+  </body>
+</html>
